@@ -57,9 +57,9 @@ const AuthForm = ({ type }: { type: FormType }) => {
         <div className="flex flex-col gap-6 card py-14 px-10">
           <div className="flex flex-row gap-2 justify-center">
             <Image src="/logo.svg" alt="logo" height={32} width={34} />
-            <h2 className="text-primary-100">Interviewe</h2>
+            <h2 className="text-primary-100">Interview Practice</h2>
           </div>
-          <h3>Practice Interviwes</h3>
+          <h3>Practice your interviews with AI</h3>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
