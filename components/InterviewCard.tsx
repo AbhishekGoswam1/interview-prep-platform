@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getRandomInterviewCover } from "@/lib/utils";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import DisplayTechIcons from "./DisplayTechIcons";
 
 const InterviewCard = ({
   interviewId,
@@ -63,7 +64,7 @@ const InterviewCard = ({
         </div>
 
             <div className="flex flex-row justify-between">
-                <p>Tech Icons</p>
+                <DisplayTechIcons techStack={techstack}  />
 
                 <Button>
                     <Link href={feedback
