@@ -123,13 +123,13 @@ export async function isAuthenticated() {
 export async function getInterviewsByUserId(
   userId: string
 ): Promise<Interview[] | null> {
-  const Interviews = await db
+  const interviews = await db
     .collection("interviews")
     .where("userId", "==", userId)
     .orderBy("createdAt", "desc")
     .get();
 
-  return Interviews.docs.map((doc) => ({
+  return interviews.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   })) as Interview[];
