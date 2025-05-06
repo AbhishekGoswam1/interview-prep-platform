@@ -3,11 +3,11 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import InterviewCard from "@/components/InterviewCard";
+import { getCurrentUser } from "@/lib/actions/auth.action";
 import {
-  getCurrentUser,
   getInterviewsByUserId,
   getLatestInterviews,
-} from "@/lib/actions/auth.action";
+} from "@/lib/actions/general.action";
 
 const page = async () => {
   const user = await getCurrentUser();
@@ -49,15 +49,7 @@ const page = async () => {
         <div className="interviews-section">
           {hasPastInterviews ? (
             userInterviews?.map((interview) => (
-              <InterviewCard
-                key={interview.id}
-                userId={user?.id}
-                interviewId={interview.id}
-                role={interview.role}
-                type={interview.type}
-                techstack={interview.techstack}
-                createdAt={interview.createdAt}
-              />
+              <InterviewCard {... interview} key={interview.id}/>
             ))
           ) : (
             <p>You haven&apos;t taken any interviews yet</p>
@@ -71,15 +63,7 @@ const page = async () => {
         <div className="interviews-section">
           {hasUpcomingInterviews ? (
             allInterview?.map((interview) => (
-              <InterviewCard
-                key={interview.id}
-                userId={user?.id}
-                interviewId={interview.id}
-                role={interview.role}
-                type={interview.type}
-                techstack={interview.techstack}
-                createdAt={interview.createdAt}
-              />
+              <InterviewCard {... interview} key={interview.id}/>
             ))
           ) : (
             <p>There are no interviews available</p>
